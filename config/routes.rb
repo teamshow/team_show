@@ -1,4 +1,30 @@
 Rails.application.routes.draw do
+  get 'memberships/login'
+
+  get 'memberships/signup'
+
+  get 'membership/signup'
+
+  get 'membership/login'
+
+  get 'login/index'
+
+  get 'article/new'
+
+  get 'article/_nav'
+
+  get 'welcome/_nav'
+
+  get 'welcome/nav'
+
+  get 'welcome/project'
+
+  get 'welcome/notice'
+
+  get 'welcome/notice'
+
+  get 'welcome/article'
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -18,7 +44,7 @@ Rails.application.routes.draw do
   resources :articles
   resources :notices
   resources :projects
-
+  resources :memberships
   # Example resource route with options:
   #   resources :products do
   #     member do

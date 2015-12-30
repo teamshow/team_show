@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <ol>
+        <% @articles.each do |a| %>
+        <li>
+            <%= link_to a[:title], :article[a.id]%>
+        </li>
+        <% end%>
+      </ol>
+    </div>
+    <div class="col-xs-4">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<h1>Login</h1>
+
+
+<%= form_for :membership_login, url: :memberships do |f| %>
+    <p>
+      <%= f.label :user %><br>
+      <%= f.text_field :user%>
+    </p>
+
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <select name="sel" id= "sel" name="sel" >
+        <option value="admin">admin</option>
+        <option value="project_member">project_member</option>
+      </select>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+    <p>
+      have not sign up ? <a href="signup">sign up</a>
+    </p>
+
+<% end %>

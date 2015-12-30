@@ -1,12 +1,8 @@
-<nav>
-  <a href="/articles/new">articles</a> |
-  <a href="/notices/new">notices</a> |
-  <a href="/projects/new">projects</a> |
-</nav>
+<%= render 'article/nav'%>
 
 <h1>New Article</h1>
 
-<%= form_for :article do |f| %>
+<%= form_for :article, url: :articles do |f| %>
     <p>
       <%= f.label :title %><br>
       <%= f.text_field :title %>

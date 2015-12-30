@@ -1,0 +1,21 @@
+<h1>member signup </h1>
+<%= form_for :signup, url: :membership_signup do |f| %>
+    <p>
+      <%= f.label :user %><br>
+      <%= f.text_field :user%>
+    </p>
+
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :confirm %><br>
+      <%= f.password_field :confirm %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>
