@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229044440) do
+ActiveRecord::Schema.define(version: 20151231023632) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "admin_id"

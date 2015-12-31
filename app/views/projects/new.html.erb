@@ -2,7 +2,7 @@
 
 <h1>New Projects</h1>
 
-<%= form_for :projects do |f| %>
+<%= form_for :project, url: :projects do |f| %>
     <p>
       <%= f.label :title %><br>
       <%= f.text_field :title %>

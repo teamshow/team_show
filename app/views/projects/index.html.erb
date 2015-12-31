@@ -5,13 +5,13 @@
     <div class="col-xs-8">
       <ol>
         <% @i = 0 %>
-        <% @articles.each do |a| %>
-        <li>
-            <% @i += 1
-               params[:id] = @i
-            %>
-            <%= link_to a[:title], articles_path + '/' + @i.to_s %>
-        </li>
+        <% @projects.each do |a| %>
+            <li>
+              <% @i += 1
+                 params[:id] = @i
+              %>
+              <%= link_to a[:name], projects_path + '/' + @i.to_s %>
+            </li>
         <% end%>
       </ol>
     </div>

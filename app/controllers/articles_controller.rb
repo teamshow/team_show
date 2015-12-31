@@ -18,9 +18,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    id = params[:id]
-    @article = Article.find_by_article_id(id)
-    redirect_to
+    id = params[:id].to_i
+    # puts id
+    if id == 1
+      puts '11'
+    end
+    @article = Article.find_by_id(id)
   end
 
 end

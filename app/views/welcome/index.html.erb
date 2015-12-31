@@ -1,47 +1,84 @@
-<%= render 'nav'%>
+<%= render 'nav' %>
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <div class="row">
-        <div class="col-xs-6">
-          <ul>
-            <li>
-              新闻资讯
-            </li>
+    <div class="row">
+      <div class="col-xs-6">
 
-          </ul>
-        </div>
-        <div class="col-xs-6">
-          <ol>
-            <li>
-              新闻资讯
-            </li>
+        <li>
+          articles <a href="/articles">more</a>
+        </li>
+        <ol>
+          <% @i = 0 %>
+          <% @articles.each do |r| %>
+              <% @i += 1
+                 params[:id] = @i
+                 if @i > 10
+                   break
+                 end
+              %>
+              <li>
+                <%= link_to r.title, articles_path + '/' + @i.to_s %>
+              </li>
+          <% end %>
+        </ol>
 
-          </ol>
-        </div>
+      </div>
+      <div class="col-xs-6">
+        <li>
+          notices <a href="/notices">more</a>
+        </li>
+        <ol>
+          <% @i = 0 %>
+          <% @notices.each do |r| %>
+              <% @i += 1
+                 params[:id] = @i
+                 if @i > 10
+                   break
+                 end
+              %>
+              <li>
+
+                <%= link_to r.title, notices_path + '/' + @i.to_s %>
+              </li>
+          <% end %>
+        </ol>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6">
-      <ol>
+    <div class="row">
+      <div class="col-xs-6">
         <li>
-          新闻资讯
+          projects <a href="/projects">more</a>
         </li>
+        <ol>
+          <% @i = 0 %>
+          <% @projects.each do |r| %>
+              <% @i += 1
+                 params[:id] = @i
+                 if @i > 10
+                   break
+                 end
+              %>
+              <li>
 
-      </ol>
-    </div>
-    <div class="col-xs-6">
-      <dl>
-        <dt>
-          Rolex
-        </dt>
-        <dd>
-          劳力士创始人为汉斯.威尔斯多夫，1908年他在瑞士将劳力士注册为商标。
-        </dd>
+                <%= link_to r.name, projects_path + '/' + @i.to_s %>
+              </li>
+          <% end %>
 
-      </dl>
+        </ol>
+      </div>
+      <div class="col-xs-6">
+
+        <dl>
+          <dt>
+            about us
+          </dt>
+          <dd>
+            劳力士创始人为汉斯.威尔斯多夫，1908年他在瑞士将劳力士注册为商标。
+          </dd>
+
+        </dl>
+      </div>
     </div>
   </div>
 </div>
