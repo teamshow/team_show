@@ -7,7 +7,7 @@
         <% @i = 0 %>
         <% @articles.each do |a| %>
         <li>
-            <% @i += 1
+            <% @i = a.id
                params[:id] = @i
             %>
             <%= link_to a[:title], articles_path + '/' + @i.to_s %>

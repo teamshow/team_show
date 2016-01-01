@@ -7,7 +7,7 @@
         <% @i = 0 %>
         <% @projects.each do |a| %>
             <li>
-              <% @i += 1
+              <% @i = a.id
                  params[:id] = @i
               %>
               <%= link_to a[:name], projects_path + '/' + @i.to_s %>

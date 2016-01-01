@@ -1,0 +1,9 @@
+<%= render 'article/nav'%>
+
+<% @projects.each do |r|%>
+    <li>
+      <%= r.name %>
+      <%= link_to '[E]', projects_edt_path+'?'+'edt='+r.id.to_s%>
+      <%= link_to '[X]', projects_modify_path+'?'+'del='+r.id.to_s%>
+    </li>
+<% end%>

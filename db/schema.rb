@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231023632) do
+ActiveRecord::Schema.define(version: 20160101065352) do
 
   create_table "admins", force: :cascade do |t|
-    t.string   "admin_id"
     t.string   "admin_name"
     t.string   "passwd"
     t.string   "email"
@@ -23,13 +22,11 @@ ActiveRecord::Schema.define(version: 20151231023632) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string   "article_id"
     t.string   "title"
     t.text     "content"
     t.string   "admin_id"
-    t.string   "release_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "belongs", force: :cascade do |t|
@@ -40,24 +37,22 @@ ActiveRecord::Schema.define(version: 20151231023632) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.string   "member_id"
     t.string   "name"
     t.string   "phone"
     t.string   "qq"
     t.string   "is_leader"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "passwd"
   end
 
   create_table "notices", force: :cascade do |t|
-    t.string   "notice_id"
     t.string   "title"
     t.text     "content"
     t.string   "admin_id"
     t.string   "string"
-    t.string   "release_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -69,7 +64,6 @@ ActiveRecord::Schema.define(version: 20151231023632) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "project_id"
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false

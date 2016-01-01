@@ -1,8 +1,20 @@
 <h1>member signup </h1>
-<%= form_for :signup, url: :membership_signup do |f| %>
+<%= form_for :signup, url: :memberships_signup_handle do |f| %>
     <p>
       <%= f.label :user %><br>
       <%= f.text_field :user%>
+    </p>
+    <p>
+      <%= f.label :phone %><br>
+      <%= f.text_field :phone%>
+    </p>
+    <p>
+      <%= f.label :qq %><br>
+      <%= f.text_field :qq%>
+    </p>
+    <p>
+      <%= f.label :is_leader %><br>
+      <%= f.text_field :is_leader%>
     </p>
 
     <p>
@@ -17,5 +29,9 @@
     <p>
       <%= f.submit %>
     </p>
+
+    <% if session[:err] == 1%>
+        <%= 'Two passwords are not the same.'%>
+    <% end%>
 
 <% end %>

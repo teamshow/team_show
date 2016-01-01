@@ -14,4 +14,7 @@ class Article < ActiveRecord::Base
       end
     end
   end
+  def Article.delete_by_id(id)
+
+  end
 end

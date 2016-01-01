@@ -1,0 +1,18 @@
+<%= render 'article/nav'%>
+<h1>Edit Notice</h1>
+
+<%= form_for :notices_edt, url: :notices_edt_handle do |f| %>
+    <p>
+      <%= f.label  :title %><br>
+      <%= f.text_field  :title, :value => @notice.title %>
+    </p>
+
+    <p>
+      <%= f.label  :text %><br>
+      <%= f.text_area  :text, :value => @notice.content %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

@@ -7,10 +7,11 @@
         <% @i = 0 %>
         <% @notices.each do |a| %>
             <li>
-              <% @i += 1
+              <% @i = a.id
                  params[:id] = @i
               %>
               <%= link_to a[:title], notices_path + '/' + @i.to_s %>
+              <%= a[:created_at]%>
             </li>
         <% end%>
       </ol>

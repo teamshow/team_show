@@ -3,19 +3,36 @@ Rails.application.routes.draw do
 
   get 'memberships/signup'
 
-  get 'membership/signup'
+  # get 'membership/signup'
+  post 'memberships/signup_handle'
 
-  get 'membership/login'
+  # get 'membership/login'
 
   get 'login/index'
 
   get 'article/new'
+
+  get 'articles/modify'
+  post 'articles/modify'
+  get 'articles/edt'
+  post 'articles/edt_handle'
+
+  get 'notices/modify'
+  post 'notices/modify'
+  get 'notices/edt'
+  post 'notices/edt_handle'
+
+  get  'projects/modify'
+  post 'projects/modify'
+  get 'projects/edt'
+  post 'projects/edt_handle'
 
   get 'article/_nav'
 
   get 'welcome/_nav'
 
   get 'welcome/nav'
+  get 'welcome/error'
 
   get 'welcome/project'
 

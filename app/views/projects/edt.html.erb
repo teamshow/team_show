@@ -1,0 +1,18 @@
+<%= render 'article/nav'%>
+<h1>Edit Project</h1>
+
+<%= form_for :projects_edt, url: :projects_edt_handle do |f| %>
+    <p>
+      <%= f.label  :title %><br>
+      <%= f.text_field  :title, :value => @project.name %>
+    </p>
+
+    <p>
+      <%= f.label  :description %><br>
+      <%= f.text_area  :description, :value => @project.description %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

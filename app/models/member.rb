@@ -10,4 +10,13 @@ class Member < ActiveRecord::Base
     end
     return @flag
   end
+  def Member.insert(name, pass, phone, qq, is_leader)
+    @m = Member.new
+    @m.name = name
+    @m.passwd = pass
+    @m.phone = phone
+    @m.qq = qq
+    @m.is_leader = is_leader
+    @m.save
+  end
 end
