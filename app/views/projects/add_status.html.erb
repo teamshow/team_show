@@ -1,0 +1,25 @@
+<%= render 'article/nav'%>
+<h1>Add Project Status</h1>
+
+<%= form_for :status_add, url: projects_add_status_handle_path do |f| %>
+    <p>
+    <b> <%= @project_name %><br> </b>
+    </p>
+
+    <% @status.each do |r| %>
+        <li>
+          <%=  r.status %>
+          <%= r.created_at%>
+          <%= link_to '[X]', projects_add_status_path+'?del_status_id='+r.id.to_s %>
+        </li>
+    <% end%>
+
+    <p>
+      <%= f.label :status %><br>
+      <%= f.text_area :status %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

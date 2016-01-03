@@ -40,13 +40,17 @@ class MembershipsController < ApplicationController
     @name = params[:membership_login][:user]
     @passwd = params[:membership_login][:password]
 
-    puts @member_type, Admin.check_membership(@name, @passwd)
-
+    # if admin login
     if Admin.check_membership(@name, @passwd) == 1 and @member_type == 'admin'
-      # puts "Admin true."
       session[:ut] = 'admin'
       session[:un] = @name
       redirect_to :new_article
+    end
+    # if member login
+    if Member.check_membership(@name, @passwd) == 1 and @member_type == 'project_member'
+      session[:ut] = 'project_member'
+      session[:un] = @name
+      redirect_to projects_my_projects_path
     end
 
   end
@@ -54,5 +58,21 @@ class MembershipsController < ApplicationController
   def index
 
   end
+
+  # delete members
+  def modify
+    if session[:ut] != 'admin'
+      redirect_to welcome_error_path
+    end
+
+   # get
+    @members = Member.all
+   # delete a member
+    if params[:del_id]
+      Member.delete(params[:del_id])
+    end
+  end
+
+
 
 end

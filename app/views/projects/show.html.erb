@@ -4,5 +4,11 @@
   <%= @project[:name]%>
 </h1>
 <p>
-  <%= @project[:description]%>
+  description:<%= @project[:description]%>
+</p>
+<p>
+  members:
+<% @members.each do |m|%>
+  <%= m.name%>
+<%end%>
 </p>

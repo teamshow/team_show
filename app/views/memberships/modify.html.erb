@@ -1,0 +1,19 @@
+<%= render 'article/nav'%>
+
+<h1>Modify members</h1>
+<li><b>
+  name
+  phone
+  qq
+  is_leader
+</b></li>
+
+<% @members.each do |m| %>
+    <li>
+      <%= m.name %>
+      <%= m.phone %>
+      <%= m.qq %>
+      <%= m.is_leader %>
+      <%= link_to '[X]', memberships_modify_path+'?del_id='+m.id.to_s %>
+    </li>
+<% end %>

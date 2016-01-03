@@ -4,11 +4,12 @@ class ProjectsController < ApplicationController
       redirect_to welcome_error_path
     end
   end
+
   def create
     redirect_to :projects
 
     @title = params[:project][:title]
-    @text  = params[:project][:text]
+    @text = params[:project][:text]
     # puts  @title, @text
     Project.insert(@title, @text)
 
@@ -20,12 +21,10 @@ class ProjectsController < ApplicationController
 
   def show
     id = params[:id].to_i
-    # puts id
-    if id == 1
-      puts '11'
-    end
     @project = Project.find_by_id(id)
+    @members = Belong.find_by_project_id(id)
   end
+
   def modify
     if session[:ut] != 'admin'
       redirect_to welcome_error_path
@@ -36,6 +35,7 @@ class ProjectsController < ApplicationController
     if params[:del]
       @del_id = params[:del]
       Project.delete(@del_id)
+      Status.delete_by_project_id(@del_id)
     end
     # edit a project
     if params[:edt]
@@ -59,12 +59,76 @@ class ProjectsController < ApplicationController
   def edt_handle
     # handle project edit post request
     if params[:projects_edt][:title]
-      Project.update(session[:edt_id], :name=>params[:projects_edt][:title],
-                    :description => params[:projects_edt][:description])
+      Project.update(session[:edt_id], :name => params[:projects_edt][:title],
+                     :description => params[:projects_edt][:description])
 
       redirect_to projects_modify_path
     end
   end
+
+  # get add_status page
+  def add_status
+    # request this page
+    if params[:add]
+      @add = params[:add]
+      session[:add_id] = @add
+    end
+    # delete a status
+    if params[:del_status_id]
+      Status.delete(params[:del_status_id])
+    end
+
+    @status = Status.find_by_project_id(session[:add_id].to_i)
+    @project_name = Project.find(session[:add_id]).name
+  end
+
+  # handle post status request.
+  def add_status_handle
+
+    Status.insert(session[:add_id], params[:status_add][:status])
+    redirect_to projects_add_status_path + "?add=" +session[:add_id].to_s
+  end
+
+  # add members
+  def add_members
+    # get
+    if params[:project_id]
+      session[:project_id] = params[:project_id]
+
+      @members_added = Belong.find_by_project_id(params[:project_id])
+      @members_all = Member.all
+      @map = {}
+
+      # get map of whom are in group
+      @members_all.each do |m|
+         @members_added.each do |a|
+           if m.name == a.name
+             @map[m.id] = 'yes'
+           end
+         end
+      end
+      puts "#{@map}"
+    end
+
+    # post delete member
+    if params[:del_member_id]
+      Belong.delete_pair(params[:del_member_id], session[:project_id])
+      redirect_to projects_add_members_path+'?project_id='+session[:project_id]
+    end
+
+    # post add member
+    if params[:add_member_id]
+      Belong.insert(params[:add_member_id], session[:project_id])
+      redirect_to projects_add_members_path+'?project_id='+session[:project_id]
+    end
+  end
+
+  # get user space
+  def my_projects
+    @member_id = Member.find_by_sql("select id from members where name = \'#{session[:un]}\'").first.id
+    @my_projects = Project.find_by_member_id(@member_id)
+  end
+
   def del
     @projects.all
   end

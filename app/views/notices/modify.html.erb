@@ -1,8 +1,9 @@
 <%= render 'article/nav'%>
-
+<h1>Modify Notices</h1>
 <% @notices.each do |r|%>
     <li>
       <%= r.title %>
+      <%= r.updated_at%>
       <%= link_to '[E]', notices_edt_path+'?'+'edt='+r.id.to_s%>
       <%= link_to '[X]', notices_modify_path+'?'+'del='+r.id.to_s%>
     </li>

@@ -4,7 +4,7 @@ class Member < ActiveRecord::Base
     @flag = 0
     @members.each do |r|
       puts r[:name], r[:passwd]
-      if r[:admin_name]==name and r[:passwd]==pass
+      if r[:name]==name and r[:passwd]==pass
         @flag = 1
       end
     end

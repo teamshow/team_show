@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'memberships/login'
 
   get 'memberships/signup'
+  get 'memberships/modify'
 
   # get 'membership/signup'
   post 'memberships/signup_handle'
@@ -26,6 +27,11 @@ Rails.application.routes.draw do
   post 'projects/modify'
   get 'projects/edt'
   post 'projects/edt_handle'
+  get 'projects/add_status'
+  post 'projects/add_status_handle'
+  get 'projects/add_members'
+  post 'projects/add_members'
+  get 'projects/my_projects'
 
   get 'article/_nav'
 

@@ -1,0 +1,33 @@
+<%= render 'article/nav'%>
+<h1>welcome</h1>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>
+            name
+          </th>
+          <th>
+            description
+          </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% @my_projects.each do |p|%>
+        <tr>
+          <td>
+            <%= p.name%>
+          </td>
+          <td>
+            <%= p.description%>
+          </td>
+        </tr>
+        <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
