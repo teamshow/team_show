@@ -1,4 +1,9 @@
 class Article < ActiveRecord::Base
+
+  def Article.images_path
+    @a = "/assets/images/"
+    return @a
+  end
   def Article.insert(title, text, admin_name)
     @a = Article.new
     @a.title = title
@@ -15,6 +20,10 @@ class Article < ActiveRecord::Base
     end
   end
   def Article.delete_by_id(id)
+  end
 
+  def Article.find_by_title(title)
+    @a = Article.find_by_sql("select id from articles where title = #{title}").first.id
+    return @a
   end
 end

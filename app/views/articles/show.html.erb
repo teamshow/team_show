@@ -1,8 +1,13 @@
 <%= render 'welcome/nav'%>
 
-<h1>
+<h3>
     <%= @article[:title]%>
-</h1>
+</h3>
 <p>
     <%= @article[:content]%>
 </p>
+<% if @image_path%>
+<p>
+  <%= image_tag(@image_path)%>
+</p>
+<% end%>

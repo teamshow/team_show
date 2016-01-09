@@ -1,21 +1,47 @@
-<%= render 'welcome/nav'%>
+<%= render 'welcome/nav' %>
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-8">
-      <ol>
+
+    <div class="col-xs-12">
+      <table class="table">
+
+        <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Articles
+          </th>
+          <th>Release Date</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
         <% @i = 0 %>
         <% @articles.each do |a| %>
-        <li>
-            <% @i = a.id
-               params[:id] = @i
-            %>
-            <%= link_to a[:title], articles_path + '/' + @i.to_s %>
-        </li>
-        <% end%>
-      </ol>
+
+            <tr>
+              <td>
+                <%= @i = a.id %>
+                <%   params[:id] = @i %>
+              </td>
+              <td>
+                <%= link_to a[:title], articles_path + '/' + @i.to_s %>
+              </td>
+              <td>
+                <%= a.updated_at%>
+              </td>
+            </tr>
+
+        <% end %>
+        </tbody>
+      </table>
+
     </div>
-    <div class="col-xs-4">
-    </div>
+
+
   </div>
 </div>
