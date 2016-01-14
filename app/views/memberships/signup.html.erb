@@ -1,37 +1,79 @@
-<h1>member signup </h1>
-<%= form_for :signup, url: :memberships_signup_handle do |f| %>
-    <p>
-      <%= f.label :user %><br>
-      <%= f.text_field :user%>
-    </p>
-    <p>
-      <%= f.label :phone %><br>
-      <%= f.text_field :phone%>
-    </p>
-    <p>
-      <%= f.label :qq %><br>
-      <%= f.text_field :qq%>
-    </p>
-    <p>
-      <%= f.label :is_leader %><br>
-      <%= f.text_field :is_leader%>
-    </p>
+<body class="signup">
+<div class="container" style="height: 100%">
+  <!--<div class="row">-->
+    <!--<div class="col-md-12" align="center" style="color: black">-->
+      <!--<h1>SIGN UP</h1>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="row signup-div" style="margin-top: 50px !important;">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 align="center" style="margin: auto;font-weight: bolder">REGISTER</h1>
+        </div>
+          <%= form_for :signup, url: :memberships_signup_handle do |f| %>
+            <div class="panel-body" style="vertical-align: middle;padding-left: 10%;padding-right: 10%">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <%= f.label(:user,class: 'col-sm-3 control-label') %>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:user, class: 'form-control')%>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label(:password ,class:'col-sm-3 control-label') %>
+                  <div class="col-sm-9">
+                    <%= f.password_field(:password ,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label(:confirm,class:'col-sm-3 control-label') %>
+                  <div class="col-sm-9">
+                    <%= f.password_field(:confirm,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label(:phone,class:'col-sm-3 control-label') %>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:phone,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label(:qq,class:'col-sm-3 control-label') %>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:qq,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label(:is_leader,class:'col-sm-3 control-label') %>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:is_leader,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group last">
+                  <div class="col-sm-offset-0 col-sm-12" align="center" style="margin-top: 10%">
+                    <%= f.submit('Register', class:'btn btn-success btn-sm') %>
+                    <button type="reset" class="btn btn-default btn-sm">Reset</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <% if session[:err] == 1%>
+                <div class="alert alert-warning warn">
+                  <a href="#" class="close" data-dismiss="alert">
+                    &times;
+                  </a>
+                  <strong>Warning！</strong>Two passwords are not the same.
+                </div>
+            <% end%>
+          <% end %>
+        <div class="panel-footer">
+          Don't Want to Registred?<a href="/">Back to Home</a>. Or Already Registered <a href="login">Login Here</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
 
-    <p>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </p>
-    <p>
-      <%= f.label :confirm %><br>
-      <%= f.password_field :confirm %>
-    </p>
 
-    <p>
-      <%= f.submit %>
-    </p>
-
-    <% if session[:err] == 1%>
-        <%= 'Two passwords are not the same.'%>
-    <% end%>
-
-<% end %>

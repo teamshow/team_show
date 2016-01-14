@@ -1,19 +1,47 @@
-<%= render 'article/nav'%>
+<%= render '/welcome/nav'%>
 
-<h1>Modify members</h1>
-<li><b>
-  name
-  phone
-  qq
-  is_leader
-</b></li>
+<div class="container">
+  <h2 style="text-align: center">Modify Members</h2>
+  <div class="toMiddle" style="height: 4px"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table index-show" style="margin-bottom: 10px !important;">
+        <thead>
+        <tr>
+          <th style="text-align: center;width: 18%">Name</th>
+          <th style="text-align: center;width: 18%">Phone</th>
+          <th style="text-align: center;width: 18%">QQ</th>
+          <th style="text-align: center;width: 18%">Is_Leader</th>
+          <th style="text-align: center;width: 8%">Delete</th>
+        </tr>
+        </thead>
+      </table>
+      <hr style="border:none;border-top:2px dotted rgba(135, 135, 135, 1);margin-bottom: 3px;margin-top: -10px">
+      <table class="table index-show table-hover" style="text-align: center">
+        <tbody>
+        <% @members.each do |m| %>
+            <tr class="bg-warning">
+              <td style="width: 18%;text-align: left;padding-left: 6%">
+                <strong>&bull;&nbsp;</strong><%= m.name %>
+              </td>
+              <td style="width: 18%">
+                <%= m.phone %>
+              </td>
+              <td style="width: 18%">
+                <%= m.qq %>
+              </td>
+              <td style="width: 18%">
+                <%= m.is_leader %>
+              </td>
+              <td style=" width: 8%;text-decoration: underline" class="article-modify">
+                <%= link_to 'Delete', memberships_modify_path+'?del_id='+m.id.to_s %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<% @members.each do |m| %>
-    <li>
-      <%= m.name %>
-      <%= m.phone %>
-      <%= m.qq %>
-      <%= m.is_leader %>
-      <%= link_to '[X]', memberships_modify_path+'?del_id='+m.id.to_s %>
-    </li>
-<% end %>
+<%= render 'welcome/footer' %>

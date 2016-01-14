@@ -1,24 +1,46 @@
-<%= render 'article/nav'%>
+<%= render '/welcome/nav'%>
 
-<h1>New Article</h1>
+<div class="container" style="min-height: 390px">
+  <h2 align="center">PUBLISH</h2>
+  <div class="toMiddle" style="height: 4px;margin-bottom: 10px;margin-top: -5px"></div>
+    <div style="width: 95%;float: right;margin-right: 2.5%">
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation" class="active"><a href="../articles/new">Article</a></li>
+      <li role="presentation"><a href="../notices/new">Notice</a></li>
+      <li role="presentation"><a href="../projects/new">Project</a></li>
+    </ul>
+    <div style="width:100%; border: solid #ddd 1px;border-top: none;height: 500px">
+      <%= form_for :article, url: :articles do |f| %>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <%= f.label(:title, class: 'col-sm-1 control-label') %>
+              <div class="col-sm-11">
+                <%= f.text_field(:title, class: 'form-control')%>
+              </div>
+            </div>
+            <div class="form-group" style="clear: both">
+              <%= f.label(:text, class: 'col-sm-1 control-label text-top') %>
+              <div class="col-sm-11" style="margin-top: 10px">
+                <%= f.text_area(:text, rows:15, class: 'form-control')%>
+              </div>
+            </div>
+            <div class="form-group" style="clear: both">
+              <%= f.label(:image, class: 'col-sm-1 control-label text-top') %>
+              <div class="col-sm-11" style="margin-top: 15px">
+                <%= f.file_field(:image)%>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12" align="right" style="margin-top: 3%;padding-left: 50%">
+                <%= f.submit('Save Article', class:'btn btn-success btn-sm') %>
+              </div>
+            </div>
+          </form>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
 
-<%= form_for :article, url: :articles do |f| %>
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
-
-    <p>
-      <%= f.label :text %><br>
-      <%= f.text_area :text %>
-    </p>
-
-    <p>
-      <%= f.label  :image %><br>
-      <%= f.file_field :image %>
-    </p>
-
-    <p>
-      <%= f.submit %>
-    </p>
-<% end %>
+<%= render 'welcome/footer' %>

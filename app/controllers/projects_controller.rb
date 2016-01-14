@@ -80,6 +80,7 @@ class ProjectsController < ApplicationController
 
     @status = Status.find_by_project_id(session[:add_id].to_i)
     @project_name = Project.find(session[:add_id]).name
+    @projects_all = Project.all
   end
 
   # handle post status request.
@@ -107,6 +108,7 @@ class ProjectsController < ApplicationController
            end
          end
       end
+      @projects_all = Project.all
       puts "#{@map}"
     end
 

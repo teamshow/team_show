@@ -1,33 +1,68 @@
-<%= render 'article/nav'%>
-<h1>Welcome, these are your projects.</h1>
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="col-xs-12">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>
-            name
-          </th>
-          <th>
-            description
-          </th>
 
-        </tr>
-        </thead>
-        <tbody>
-        <% @my_projects.each do |p|%>
-        <tr>
-          <td>
-            <%= p.name%>
-          </td>
-          <td>
-            <%= p.description%>
-          </td>
-        </tr>
-        <%end%>
-        </tbody>
-      </table>
+<%= render 'member/nav'%>
+
+<div class="container" style="position:relative;min-height: 390px">
+  <div align="center" style="margin-bottom: 20px">
+    <h1>
+      All My Projects
+    </h1>
+  </div>
+  <div class="panel panel-info" style="width: 25%;float: left">
+    <div class="panel-heading">
+     <h3 class="panel-title" align="center" style="font-weight: bold">
+       Project Name
+     </h3>
+    </div>
+    <div class="panel-body">
+      <% @my_projects.each do |p|%>
+        <div class="list-group-item" >
+          <% link_to p[:name], member_path + '/' + p.id.to_s %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+  <div class="panel panel-primary" style="width: 70%;margin-left:5%;float: left">
+    <div class="panel-heading">
+      <h3 class="panel-title" align="center" style="font-weight: bold">
+        Descriptions
+      </h3>
+    </div>
+    <div class="panel-body" style="color: black">
+      <textarea rows="20" readonly="readonly" placeholder="These are the decriptions of the project..." style="width: 100%;border-radius: 5px;border-color: #2aabd2"></textarea>
     </div>
   </div>
 </div>
+
+<%= render 'welcome/footer' %>
+<!--<h1>these are your projects.</h1>-->
+<!--<div class="container-fluid">-->
+  <!--<div class="row-fluid">-->
+    <!--<div class="col-xs-12">-->
+      <!--<table class="table">-->
+        <!--<thead>-->
+        <!--<tr>-->
+          <!--<th>-->
+            <!--name-->
+          <!--</th>-->
+          <!--<th>-->
+            <!--description-->
+          <!--</th>-->
+
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<% @my_projects.each do |p|%>-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<%= p.name%>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<%= p.description%>-->
+          <!--</td>-->
+        <!--</tr>-->
+        <!--<%end%>-->
+        <!--</tbody>-->
+      <!--</table>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
