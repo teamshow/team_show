@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   end
 
   def Project.find_by_member_id(id)
-    @ret = Project.find_by_sql("select projects.name,projects.description from belongs,members,projects where projects.id = belongs.project_id and belongs.member_id = members.id and belongs.member_id = #{id}")
+    @ret = Project.find_by_sql("select projects.id,projects.name,projects.description from belongs,members,projects where projects.id = belongs.project_id and belongs.member_id = members.id and belongs.member_id = #{id}")
     return @ret
   end
 end

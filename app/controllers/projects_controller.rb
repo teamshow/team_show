@@ -80,6 +80,7 @@ class ProjectsController < ApplicationController
 
     @status = Status.find_by_project_id(session[:add_id].to_i)
     @project_name = Project.find(session[:add_id]).name
+    @projects_all = Project.all
   end
 
   # handle post status request.
@@ -107,6 +108,7 @@ class ProjectsController < ApplicationController
            end
          end
       end
+      @projects_all = Project.all
       puts "#{@map}"
     end
 
@@ -127,6 +129,7 @@ class ProjectsController < ApplicationController
   def my_projects
     @member_id = Member.find_by_sql("select id from members where name = \'#{session[:un]}\'").first.id
     @my_projects = Project.find_by_member_id(@member_id)
+    puts "#{@my_projects}"
   end
 
   def del

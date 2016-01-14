@@ -1,9 +1,34 @@
-<%= render 'article/nav'%>
-<h1>Modify Articles</h1>
-<% @articles.each do |r|%>
-    <li>
-      <%= r.title %>
-      <%= link_to '[E]', articles_edt_path+'?'+'edt='+r.id.to_s%>
-      <%= link_to '[X]', articles_modify_path+'?'+'del='+r.id.to_s%>
-    </li>
-<% end%>
+<%= render '/welcome/nav'%>
+
+<div class="container">
+  <h2>Modify Atricles</h2>
+  <div class="toRight" style="height: 4px"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table index-show table-hover" style="vertical-align: middle">
+        <tbody>
+        <% @i = 0 %>
+        <% @articles.each do |a| %>
+            <tr class="bg-warning">
+              <td style="width: 10%;text-align: center">
+                <%= @i = a.id %>
+                <%   params[:id] = @i %>
+              </td>
+              <td style="width: 80%">
+                <%= link_to a[:title], articles_path + '/' + @i.to_s%>
+              </td>
+              <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
+                <%= link_to 'Edit', articles_edt_path+'?'+'edt='+a.id.to_s%>
+              </td>
+              <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
+                <%= link_to 'Delete', articles_modify_path+'?'+'del='+a.id.to_s%>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= render 'welcome/footer' %>
