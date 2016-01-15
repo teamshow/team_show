@@ -24,7 +24,7 @@
             <div class="form-group">
               <%= f.label(:password,class:'col-sm-3 control-label') %>
               <div class="col-sm-9">
-                <%= f.password_field(:password,class: 'form-control') %>
+                <%= f.password_field(:password,class: 'form-control',:id=>'pass') %>
               </div>
             </div>
             <!--<div class="form-group">-->
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group last">
               <div class="col-sm-offset-0 col-sm-12" align="center" style="margin-top: 10%">
-                <%= f.submit('Sign in', class:'btn btn-success btn-sm') %>
+                <%= f.submit('Sign in', class:'btn btn-success btn-sm', :id=>'submit_btn') %>
                 <button type="reset" class="btn btn-default btn-sm">
                   Reset</button>
               </div>
@@ -63,3 +63,17 @@
   </div>
 </div>
 </body>
+
+<script type="text/ecmascript" src="sha1.js"></script>
+<script type="text/javascript">
+
+    var form1 = document.getElementById("submit_btn")
+    form1.onclick = function(){
+        var pass = document.getElementById('pass').value;
+
+        var pass_hex = hex_sha1(pass);
+        document.getElementById('pass').value = pass_hex;
+
+    }
+
+</script>

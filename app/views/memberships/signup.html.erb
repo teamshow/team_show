@@ -1,5 +1,4 @@
 
-<%= render 'sha1'%>
 
 <body class="signup">
 <div class="container" style="height: 100%">
@@ -16,19 +15,19 @@
                 <div class="form-group">
                   <%= f.label(:user,class: 'col-sm-3 control-label') %>
                   <div class="col-sm-9">
-                    <%= f.text_field(:user, class: 'form-control')%>
+                    <%= f.text_field(:user, class: 'form-control', :id=>'user')%>
                   </div>
                 </div>
                 <div class="form-group">
                   <%= f.label(:password ,class:'col-sm-3 control-label') %>
                   <div class="col-sm-9">
-                    <%= f.password_field(:password ,class: 'form-control') %>
+                    <%= f.password_field(:password ,class: 'form-control', :id=>'pass1') %>
                   </div>
                 </div>
                 <div class="form-group">
                   <%= f.label(:confirm,class:'col-sm-3 control-label') %>
                   <div class="col-sm-9">
-                    <%= f.password_field(:confirm,class: 'form-control') %>
+                    <%= f.password_field(:confirm,class: 'form-control', :id=>'pass2') %>
                   </div>
                 </div>
                 <div class="form-group">
@@ -51,7 +50,8 @@
                 </div>
                 <div class="form-group last">
                   <div class="col-sm-offset-0 col-sm-12" align="center" style="margin-top: 10%">
-                    <%= f.submit('Register', class:'btn btn-success btn-sm') %>
+                    <%= f.submit('Register', class:'btn btn-success btn-sm', :id=>"submit_btn")
+                    %>
                     <button type="reset" class="btn btn-default btn-sm">Reset</button>
                   </div>
                 </div>
@@ -74,5 +74,4 @@
   </div>
 </div>
 </body>
-
-
+<%= render 'sha1'%>
