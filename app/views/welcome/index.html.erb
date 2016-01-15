@@ -17,14 +17,14 @@
               <%
                  params[:id] = r.id
 
-                 if @i > 10
+                 if @i > 5
                    break
                  end
                  @i += 1
                  puts "#{r}"
               %>
               <tr>
-                <td><%= link_to r.title, articles_path + '/' + @i.to_s %></td>
+                <td><%= link_to r.title, articles_path + '/' + r.id.to_s %></td>
                 <td class="index-date"><%= r[:created_at] %></td>
               </tr>
           <% end %>
@@ -44,14 +44,14 @@
           <% @notices.each do |r| %>
               <%
                  params[:id] = r.id
-                 if @i > 10
+                 if @i > 5
                    break
                  end
                  @i += 1
                  puts "#{r}"
               %>
               <tr>
-                <td><%= link_to r.title, notices_path + '/' + @i.to_s %></td>
+                <td><%= link_to r.title, notices_path + '/' + r.id.to_s %></td>
                 <td class="index-date"><%= r[:created_at] %></td>
               </tr>
           <% end %>
@@ -73,14 +73,14 @@
               <%
                  params[:id] = r.id
 
-                 if @i > 10
+                 if @i > 5
                    break
                  end
                  @i += 1
                  puts "#{r}"
               %>
               <tr>
-                <td><%= link_to r.name, projects_path + '/' + @i.to_s %></td>
+                <td><%= link_to r.name, projects_path + '/' + r.id.to_s %></td>
               </tr>
           <% end %>
 

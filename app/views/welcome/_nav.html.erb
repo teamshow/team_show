@@ -34,11 +34,11 @@
             </li>
           </ul>
         </div>
-        <button href="/" class="btn btn-primary btn-xs" style="margin-left: 10px">Log out</button>
+        <button onclick="window.location.href='/?operation=log_out'" class="btn btn-primary btn-xs" style="margin-left: 10px">Log out</button>
     <% else%>
         Welcome, <%= session[:un] %>
         <a href="../projects/my_projects" style="color: white;margin-left: 10px">My projects</a>
-        <button class="btn btn-primary btn-xs" style="margin-left: 10px">Log out</button>
+        <button onclick="window.location.href='/?operation=log_out'" class="btn btn-primary btn-xs" style="margin-left: 10px">Log out</button>
     <%end%>
     <% end%>
   </div>
@@ -50,7 +50,7 @@
         <li><a href="/articles">Articles</a></li>
         <li><a href="/notices">Notices</a></li>
         <li><a href="/projects">Projects</a></li>
-        <li><a href="/">About Us</a></li>
+        <li><a href="/welcome/about_us">About Us</a></li>
       </ul>
     </div>
 </nav>
