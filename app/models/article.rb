@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
   end
 
   def Article.find_by_title(title)
-    @a = Article.find_by_sql("select id from articles where title = #{title}").first.id
+    @a = Article.find_by_sql("select id from articles where title = '#{title}'").first.id
     return @a
   end
 end

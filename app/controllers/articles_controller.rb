@@ -28,16 +28,20 @@ class ArticlesController < ApplicationController
     @title = params[:article][:title]
     @text  = params[:article][:text]
     @admin_name = session[:un]
-    @image_file_name = uploadfile(params[:article][:image])
-    # puts "----------------------"
-    # puts @image_file_name
-    # puts "----------------------"
-    # put  @title, @text into Article
+
+
     Article.insert(@title, @text, @admin_name)
 
-    @id_just_gen = Article.find_by_title(@title)
-    # put image into Image
-    Image.insert(@id_just_gen, @image_file_name)
+    if params[:article][:image]
+      @id_just_gen = Article.find_by_title(@title)
+      # put image into Image
+      @image_file_name = uploadfile(params[:article][:image])
+      # puts "----------------------"
+      # puts @image_file_name
+      # puts "----------------------"
+      # put  @title, @text into Article
+      Image.insert(@id_just_gen, @image_file_name)
+    end
   end
 
   def index
