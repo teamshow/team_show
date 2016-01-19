@@ -1,16 +1,21 @@
 <%= render '/welcome/nav'%>
 
 <div class="container">
-  <h3>Details of Notices</h3>
+  <h3 align="center">通知列表</h3>
+  <div style="margin-bottom: 5px">
+    <ol class="breadcrumb">
+      <li><a href="/">主页</a></li>
+      <li class="active">项目</li>
+    </ol>
+  </div>
   <div class="toLeft" style="height: 4px;margin-top: -10px"></div>
   <div class="row">
     <div class="col-xs-12">
       <table class="table index-show" style="margin-bottom: 10px !important;">
         <thead style="">
         <tr style="line-span: 3">
-          <th style="width: 10%;text-align: center">ID</th>
-          <th style="width: 60%">Articles</th>
-          <th style="text-align: right; width: 30%">Release Date</th>
+          <th style="width: 60%">通知</th>
+          <th style="text-align: right; width: 30%">发布日期</th>
         </tr>
         </thead>
       </table>
@@ -20,10 +25,8 @@
         <% @i = 0 %>
         <% @notices.each do |a| %>
             <tr>
-              <td style="width: 10%;text-align: center">
-                <%= @i = a.id %>
+                <% @i = a.id %>
                 <%params[:id] = @i%>
-              </td>
               <td style="width: 60%">
                 <%= link_to a[:title], notices_path + '/' + @i.to_s %>
               </td>

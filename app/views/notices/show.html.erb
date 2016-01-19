@@ -1,6 +1,11 @@
 <%= render '/welcome/nav'%>
 
 <div class="container" style="min-height: 390px">
+  <ol class="breadcrumb">
+    <li><a href="/">主页</a></li>
+    <li><a href="/notices">通知列表</a></li>
+    <li class="active"><%= @notice[:title]%></li>
+  </ol>
   <div align="center">
     <h1>
       <%= @notice[:title]%>

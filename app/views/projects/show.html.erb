@@ -1,6 +1,11 @@
 <%= render '/welcome/nav'%>
 
 <div class="container" style="position:relative;min-height: 390px">
+  <ol class="breadcrumb">
+    <li><a href="/">主页</a></li>
+    <li><a href="/projects">项目列表</a></li>
+    <li class="active"><%= @project[:name]%></li>
+  </ol>
   <div align="center">
     <h1>
       <%= @project[:name]%>
@@ -14,8 +19,8 @@
   <table class="table index-show">
     <thead>
       <tr style="">
-        <td style="width: 75%;font-weight: bold">Descriptions</td>
-        <td style="width: 25%;font-weight: bold">Members</td>
+        <td style="width: 75%;font-weight: bold">项目详情</td>
+        <td style="width: 25%;font-weight: bold">成员</td>
       </tr>
     </thead>
   </table>
@@ -30,9 +35,9 @@
     </div>
     <div style="width: 40%;position:absolute; left: 30%;bottom: 40px">
       <% if session[:ut]!=nil%>
-          <button class="btn btn-success" style="width: 100%">Join in</button>
+          <button class="btn btn-success" style="width: 100%">加入</button>
       <% else %>
-          <a href="../memberships/login" role="button" class="btn btn-success" style="width: 100%">Join in</a>
+          <a href="../memberships/login" role="button" class="btn btn-success" style="width: 100%">加入</a>
       <% end%>
 
   </div>

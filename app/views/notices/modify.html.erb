@@ -1,7 +1,7 @@
 <%= render '/welcome/nav'%>
 
 <div class="container">
-  <h2>Modify Notices</h2>
+  <h2>修改通知</h2>
   <div class="toRight" style="height: 4px"></div>
   <div class="row">
     <div class="col-xs-12">
@@ -16,10 +16,10 @@
                 <%= r.updated_at%>
               </td>
               <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
-                <%= link_to 'Edit', notices_edt_path+'?'+'edt='+r.id.to_s%>
+                <%= link_to '编辑', notices_edt_path+'?'+'edt='+r.id.to_s%>
               </td>
               <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
-                <%= link_to 'Delete', notices_modify_path+'?'+'del='+r.id.to_s%>
+                <%= link_to '删除', notices_modify_path+'?'+'del='+r.id.to_s%>
               </td>
             </tr>
         <% end %>

@@ -1,7 +1,7 @@
 <%= render '/welcome/nav'%>
 
 <div class="container">
-  <h2>Modify Atricles</h2>
+  <h2>修改相关报道</h2>
   <div class="toRight" style="height: 4px"></div>
   <div class="row">
     <div class="col-xs-12">
@@ -10,18 +10,16 @@
         <% @i = 0 %>
         <% @articles.each do |a| %>
             <tr class="bg-warning">
-              <td style="width: 10%;text-align: center">
-                <%= @i = a.id %>
+                <% @i = a.id %>
                 <%   params[:id] = @i %>
-              </td>
               <td style="width: 80%">
-                <%= link_to a[:title], articles_path + '/' + @i.to_s%>
+                <strong>&bull;&nbsp;</strong><%= link_to a[:title], articles_path + '/' + @i.to_s%>
               </td>
               <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
-                <%= link_to 'Edit', articles_edt_path+'?'+'edt='+a.id.to_s%>
+                <%= link_to '编辑', articles_edt_path+'?'+'edt='+a.id.to_s%>
               </td>
               <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
-                <%= link_to 'Delete', articles_modify_path+'?'+'del='+a.id.to_s%>
+                <%= link_to '删除', articles_modify_path+'?'+'del='+a.id.to_s%>
               </td>
             </tr>
         <% end %>

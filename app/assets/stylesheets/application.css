@@ -26,10 +26,10 @@ body,
         margin-bottom: 20px;
     }
 }
-/*.container{*/
-    /*!*min-height: 100%;*!*/
-    /*height: auto !important;*/
-/*}*/
+.container{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
 .page-header{
     border-radius: 5px;
     width: 1024px;
@@ -197,4 +197,8 @@ h3,
 .toMiddle {
     background-image:-webkit-linear-gradient(to right, aqua, blue, aqua);
     background-image:linear-gradient(to right, aqua ,blue, aqua);
+}
+.row{
+    margin-left: auto !important;
+    margin-right: auto !important;
 }

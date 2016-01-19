@@ -53,7 +53,26 @@ class ProjectsController < ApplicationController
     @edt_id = params[:edt]
     session[:edt_id] = @edt_id
     @project = Project.find(@edt_id)
+    @status = Status.find_by_project_id(@edt_id.to_i)
 
+    if params[:edt]
+      session[:edt] = params[:edt]
+
+      @members_added = Belong.find_by_project_id(params[:edt])
+      @members_all = Member.all
+      @map = {}
+
+      # get map of whom are in group
+      @members_all.each do |m|
+        @members_added.each do |a|
+          if m.name == a.name
+            @map[m.id] = 'yes'
+          end
+        end
+      end
+      @projects_all = Project.all
+      puts "#{@map}"
+    end
   end
 
   def edt_handle

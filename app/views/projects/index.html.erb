@@ -1,15 +1,21 @@
 <%= render '/welcome/nav'%>
 
 <div class="container">
-  <h3>Details of Projects</h3>
+  <h3 align="center">项目列表</h3>
+  <div style="margin-bottom: 5px">
+    <ol class="breadcrumb">
+      <li><a href="/">主页</a></li>
+      <li class="active">项目</li>
+    </ol>
+  </div>
   <div class="toRight" style="height: 4px;margin-top: -10px"></div>
   <div class="row">
     <div class="col-xs-12">
       <table class="table index-show" style="margin-bottom: 10px !important;">
         <thead style="">
         <tr style="line-span: 3">
-          <th style="width: 10%;text-align: center">ID</th>
-          <th style="width: 60%">Projects</th>
+          <th style="width: 50%">项目名称</th>
+          <th style="width: 50%">项目最新状态</th>
         </tr>
         </thead>
       </table>
@@ -18,13 +24,14 @@
         <tbody>
         <% @i = 0 %>
         <% @projects.each do |a| %>
+              <% @i = a.id %>
+              <%params[:id] = @i%>
             <tr>
-              <td style="width: 10%;text-align: center">
-                <%= @i = a.id %>
-                <%params[:id] = @i%>
-              </td>
-              <td style="width: 60%">
+              <td style="width: 50%">
                 <%= link_to a[:name], projects_path + '/' + @i.to_s %>
+              </td>
+              <td style="width: 50%">
+                项目状态！！
               </td>
             </tr>
         <% end %>
