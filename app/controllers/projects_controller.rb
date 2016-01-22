@@ -17,6 +17,16 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all.reverse_order
+    @status = Status.find_by_sql("select * from statuses where 1=1 group by project_id order by created_at desc")
+
+    @status_dict = {}
+    @projects.each do |p|
+      @status.each do |s|
+        if p.id == s.project_id
+          @status_dict[p.id] = s.status
+        end
+      end
+    end
   end
 
   def show

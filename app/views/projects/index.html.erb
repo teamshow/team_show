@@ -31,7 +31,7 @@
                 <%= link_to a[:name], projects_path + '/' + @i.to_s %>
               </td>
               <td style="width: 50%">
-                项目状态！！
+                <%= @status_dict[@i]%>
               </td>
             </tr>
         <% end %>
